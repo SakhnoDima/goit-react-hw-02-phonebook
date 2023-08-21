@@ -9,7 +9,7 @@ class Form extends Component {
   idNameForm = nanoid();
   idTelForm = nanoid();
 
-  //? === сабміт форми ===
+  // === сабміт форми ===
 
   handleSubmit = evt => {
     evt.preventDefault();
@@ -17,18 +17,18 @@ class Form extends Component {
     this.reset();
   };
 
-  //? === зміна інпут ===
+  // === зміна інпут ===
   handleChangeTel = evt => {
     this.setState({ number: evt.target.value });
   };
   handleChangeName = evt => {
     this.setState({ name: evt.target.value });
   };
-  //? === reset ===
+  // === reset ===
   reset = () => {
     this.setState({ name: '', number: '' });
   };
-  //? === рендер ===
+  // === рендер ===
 
   render() {
     const { name, number } = this.state;

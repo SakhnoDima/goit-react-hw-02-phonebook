@@ -15,9 +15,12 @@ export class App extends Component {
     ],
     filter: '',
   };
+  // === сабміт форми ===
 
   formSubmitData = ({ name, number }) => {
     const { contacts } = this.state;
+    // ===  перевірка на вже існуюче ім'я ===
+
     const includeName = contacts.some(
       contact => contact.name.toLowerCase().trim() === name.toLowerCase().trim()
     );
@@ -25,14 +28,22 @@ export class App extends Component {
       alert(`${name} Is already in contacts`);
       return;
     }
+    // === додавання до списку крнтакту ===
+
     const updateContacts = { id: nanoid(2), name, number };
     this.setState(prevState => ({
       contacts: [...prevState.contacts, updateContacts],
     }));
   };
+
+  // === ім'я в полі фільтру ===
+
   onFilterChange = event => {
     this.setState({ filter: event.currentTarget.value });
   };
+
+  // === фільтруємо по імені ===
+
   filterContacts = () => {
     const { contacts, filter } = this.state;
     const normalizeFilter = filter.toLowerCase();
@@ -41,6 +52,9 @@ export class App extends Component {
       return name.toLowerCase().includes(normalizeFilter);
     });
   };
+
+  // === видаляю контакт ===
+
   deleteContact = idCard => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(({ id }) => id !== idCard),
