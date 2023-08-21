@@ -62,18 +62,23 @@ export class App extends Component {
     }));
   };
   render() {
+    const { contacts } = this.state;
     const { filter } = this.state;
     const filteredContacts = this.filterContacts();
     return (
       <MainPage>
         <h1 style={{ textAlign: 'center' }}>Phonebook</h1>
         <Form onSubmit={this.formSubmitData} />
-        <h2 style={{ textAlign: 'center' }}>Contacts</h2>
-        <Filter value={filter} onChange={this.onFilterChange} />
-        <Contacts
-          contacts={filteredContacts}
-          onDeleteContacts={this.deleteContact}
-        />
+        {contacts.length > 0 && (
+          <>
+            <h2 style={{ textAlign: 'center' }}>Contacts</h2>
+            <Filter value={filter} onChange={this.onFilterChange} />
+            <Contacts
+              contacts={filteredContacts}
+              onDeleteContacts={this.deleteContact}
+            />
+          </>
+        )}
       </MainPage>
     );
   }

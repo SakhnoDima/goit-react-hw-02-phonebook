@@ -24,12 +24,11 @@ class Form extends Component {
   };
 
   // === зміна інпут ===
-  handleChangeTel = evt => {
-    this.setState({ number: evt.target.value });
+  handleChange = evt => {
+    const { name, value } = evt.target;
+    this.setState({ [name]: value });
   };
-  handleChangeName = evt => {
-    this.setState({ name: evt.target.value });
-  };
+
   // === reset ===
   reset = () => {
     this.setState({ name: '', number: '' });
@@ -45,7 +44,7 @@ class Form extends Component {
           Name
           <Input
             value={name}
-            onChange={this.handleChangeName}
+            onChange={this.handleChange}
             type="text"
             name="name"
             id={this.idNameForm}
@@ -58,7 +57,7 @@ class Form extends Component {
           Number
           <Input
             value={number}
-            onChange={this.handleChangeTel}
+            onChange={this.handleChange}
             id={this.idTelForm}
             type="tel"
             name="number"
