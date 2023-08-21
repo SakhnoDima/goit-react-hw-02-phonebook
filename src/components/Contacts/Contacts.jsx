@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { RiContactsBook2Fill, RiDeleteBin5Line } from 'react-icons/ri';
 import { Button, Item, List } from './Contacts.styles';
 
 const Contacts = ({ contacts, onDeleteContacts }) => {
@@ -9,8 +10,11 @@ const Contacts = ({ contacts, onDeleteContacts }) => {
         {contacts.map(({ name, number, id }) => {
           return (
             <Item key={id}>
+              <RiContactsBook2Fill />
               {name} : {number}
-              <Button onClick={() => onDeleteContacts(id)}>Delete</Button>
+              <Button onClick={() => onDeleteContacts(id)}>
+                <RiDeleteBin5Line />
+              </Button>
             </Item>
           );
         })}
